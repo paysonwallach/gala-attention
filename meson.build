@@ -61,7 +61,12 @@ endif
 mutter_typelib_dir = libmutter_dep.get_pkgconfig_variable('typelibdir')
 
 add_project_arguments(
-  '--vapidir=' + vapi_dir,
+  ['-DG_LOG_DOMAIN="@0@"'.format(meson.project_name())],
+  language:'c'
+)
+
+add_project_arguments(
+  ['--vapidir', vapi_dir],
   language: 'vala',
 )
 
